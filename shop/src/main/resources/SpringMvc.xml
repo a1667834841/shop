@@ -16,7 +16,7 @@
 		<!-- 配置视图解析器 -->
 		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 			<!-- 前缀 -->
-			<property name="prefix" value="/WEB-INF/views/"></property>
+			<property name="prefix" value="/views/"></property>
 			<!-- 后缀 -->
 			<property name="suffix" value=".html"></property>
 		</bean>
@@ -29,9 +29,6 @@
 		<mvc:annotation-driven/>
 
         <!--过滤静态资源-->
-    <mvc:resources mapping="/views/data/**" location="/WEB-INF/views/data"/>
-    <mvc:resources mapping="/views/files/**" location="/WEB-INF/views/files"/>
-    <mvc:resources mapping="/images/**" location="/images/"/>
-    <mvc:resources mapping="/data/**" location="/data/"/>
+
 
 </beans>

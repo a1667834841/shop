@@ -14,5 +14,5 @@ public interface DataDictionaryDao {
     /*更新字典数据*/
     public void updateData(DataDictionary dd);
     /*删除字典数据*/
-    public void delData(String id);
+    public void delData(Integer id);
 }
