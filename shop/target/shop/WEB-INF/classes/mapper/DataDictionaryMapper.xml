@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingliang.dao.DataDictionaryDao">
+    <resultMap id="BaseResultMap" type="com.qingliang.entity.DataDictionary">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="typeCode" jdbcType="VARCHAR" property="typecode" />
+        <result column="typeName" jdbcType="VARCHAR" property="typename" />
+        <result column="valueId" jdbcType="INTEGER" property="valueid" />
+        <result column="valueName" jdbcType="VARCHAR" property="valuename" />
+    </resultMap>
+
+    <!--查询所有字典数据-->
+    <select id="findAllData" resultType="com.qingliang.entity.DataDictionary">
+        select *  from data_dictionary
+    </select>
+
+    <!--插入字典-->
+    <insert id="addData" parameterType="com.qingliang.entity.DataDictionary" >
+        <selectKey keyProperty="id" resultType="Integer" order="BEFORE" keyColumn="id">
+        select nvl(max(id),0)+1 from data_dictionary
+        </selectKey>
+        insert into data_dictionary
+        <trim prefix=" (" suffix=")" suffixOverrides=",">
+            <if test="id!=null">
+                id,
+            </if>
+            <if test="typecode!=null">
+                typecode,
+            </if>
+            <if test="typename != null">
+                typename,
+            </if>
+        <if test="valueid!=null">
+            valueid,
+        </if>
+        <if test="valuename!=null">
+            valuename,
+        </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="id!=null">
+               #{id},
+            </if>
+            <if test="typecode!=null">
+               #{ typecode},
+            </if>
+            <if test="typename != null">
+                #{typename},
+            </if>
+            <if test="valueid!=null">
+                #{valueid},
+            </if>
+            <if test="valuename!=null">
+                #{valuename},
+            </if>
+        </trim>
+    </insert>
+
+    <!--更新字典-->
+    <update id="updateData" parameterType="com.qingliang.entity.DataDictionary">
+        update data_dictionary
+        <set>
+          <if test="typecode!=null">
+              typecode=#{typecode},
+          </if>
+            <if test="typename!=null">
+                typename=#{typename},
+            </if>
+            <if test="valueid!=null">
+                valueid=#{valueid},
+            </if>
+            <if test="valuename!=null">
+                valuename=#{valuename},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--删除字典-->
+    <delete id="delData" parameterType="int" >
+        delete * from data_dictionary where id=#{id}
+    </delete>
+
+</mapper>
