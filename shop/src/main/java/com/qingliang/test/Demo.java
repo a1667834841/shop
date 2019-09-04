@@ -52,7 +52,8 @@ public class Demo {
     }
 
     /*字典删除*/
+    @Test
     public void dem4(){
-
+            am.delData(4);
     }
 }

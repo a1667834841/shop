@@ -78,7 +78,7 @@
 
     <!--删除字典-->
     <delete id="delData" parameterType="int" >
-        delete * from data_dictionary where id=#{id}
+        delete  from data_dictionary  where id=#{id}
     </delete>
 
 </mapper>

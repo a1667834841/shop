@@ -23,6 +23,8 @@
   </head>
   <body>
     <div id="base" class="">
+      <!--获取项目根目录-->
+      <input id="PageContext" type="hidden" value="${pageContext.request.contextPath}" />
 
       <!-- Unnamed (矩形) -->
       <div id="u3207" class="ax_default _文本段落">
@@ -1312,3 +1314,20 @@
     </div>
   </body>
 </html>
+<script type="text/javascript">
+
+  $(function(){
+
+      $.ajax({
+          url: "../data/findAllData",
+          dataType:"json",
+          success:function(data){
+
+          }
+      });
+
+
+
+  });
+
+</script>
